@@ -8,6 +8,7 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_ros/transform_broadcaster.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
+#include <ros/package.h>
 
 // Project Packages
 #include "utils/math.h"

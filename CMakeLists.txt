@@ -9,6 +9,7 @@ set (CMAKE_CXX_FLAGS "-O3")
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  roslib
   std_msgs
   message_generation
   message_filters
@@ -110,6 +111,7 @@ target_link_libraries(speed_publisher_node ${catkin_LIBRARIES})
 add_executable(odometry_node src/odometry_node.cpp)
 add_dependencies(odometry_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(odometry_node 
-  ${catkin_LIBRARIES}   
+  ${catkin_LIBRARIES}
+  ${ROS_LIB_DIR}   
   gflags glog
   yaml-cpp)

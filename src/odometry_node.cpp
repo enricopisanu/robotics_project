@@ -16,12 +16,10 @@ OdometryNode::OdometryNode(const std::string& bag_filename){
 }
 
 void OdometryNode::LoadInitStateYAML_(const std::string& bag_filename){
-
-  auto current_dir = std::filesystem::current_path();
   YAML::Node config;
+  std::string package_path = ros::package::getPath("robotics_hw1");
   try {
-    config = YAML::LoadFile(current_dir.string() +
-              "/../robotics_project/src/robotics_hw1/cfg/initial_pose.yaml");
+    config = YAML::LoadFile(package_path + "/cfg/initial_pose.yaml");
   } catch (const YAML::ParserException& ex) {
     std::cout << ex.what() << std::endl;
   } catch (const YAML::BadFile& ex) {

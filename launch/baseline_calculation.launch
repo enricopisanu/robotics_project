@@ -1,7 +1,7 @@
 <launch>
 
 <param name="use_sim_time" value="true" />
-<arg name="bag_folder" value="/home/enricocco/robotics_project/src/robotics_hw1/bags/" />
+<arg name="bag_folder" value="$(find robotics_hw1)/bags/" />
 <arg name="bag_name" value="bag1" />
 
 <node pkg="robotics_hw1" type="baseline_calculation_node" name="baseline_calculation_node" output="screen" required="true"/>
