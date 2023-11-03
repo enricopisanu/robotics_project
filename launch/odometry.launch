@@ -1,0 +1,19 @@
+<launch>
+
+<param name="use_sim_time" value="true" />
+<arg name="bag_folder" value="$(find robotics_hw1)/bags/" />
+<arg name="bag_name" value="bag1" />
+<arg name="rviz" default="true" />
+
+
+<node pkg="robotics_hw1" type="speed_publisher_node" name="speed_publisher_node" output="screen" required="true"/>
+<node pkg="robotics_hw1" type="odometry_node" name="odometry_node" args="--bag_filename=$(arg bag_name)" output="screen" required="true"/>
+<node pkg="tf2_ros" type="static_transform_publisher" name="world" args="0 0 0 0 0 0 1 world odom" />
+<node name="playbag" pkg="rosbag" type="play"
+        args="--clock $(arg bag_folder)$(arg bag_name).bag"
+        output="log"
+        required="true"/>
+
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find robotics_hw1)/rviz/odometry.rviz" if="$(arg rviz)"/>
+
+</launch>
